@@ -1,0 +1,39 @@
+<main>
+    <!--  Caja 1 -->
+      <section class="caja1">
+        <div class="card">
+          <div class="foto">
+            <img src="{{ miPerfil.photo }}" alt="">
+          </div>
+          <div class="info">
+            <h2><i class="fa-solid fa-user" style="color: #025503;"></i>{{ miPerfil.name }} {{ miPerfil.last_name }}</h2>
+            <p>Nombre: <span id="nombre">{{ miPerfil.name }}</span></p>
+            <p>Apellidos: <span id="apellidos">{{ miPerfil.last_name }}</span></p>
+            <p>Correo: <span id="correo">{{ miPerfil.email }}</span></p>
+          </div>
+        </div>
+      </section>
+    <!--  Caja 2 -->
+    <section class="caja2"> 
+        <form class="registro-form">
+            <h2>Editar datos</h2>
+            <div class="registro-group">
+                <input type="text" placeholder="Nombre" id="nombre" name="nombre" [(ngModel)]="nuevoNombre" required>
+              </div>
+          
+              <div class="registro-group">
+                <input type="text" placeholder="Apellidos" id="apellido" name="apellido" [(ngModel)]="nuevoApellido" required>
+              </div>
+          
+              <div class="registro-group">
+                <input type="email" placeholder="Correo electrónico" id="email" name="email" [(ngModel)]="nuevoEmail" required>
+              </div>
+          
+              <div class="registro-group">
+                <input type="text" placeholder="URL de la imagen" id="imagen" name="imagen" [(ngModel)]="nuevaImagen" required>
+              </div>
+          
+          <button type="button" (click)="mostrarNombre()">Modificar</button>
+        </form>
+    </section>
+</main>

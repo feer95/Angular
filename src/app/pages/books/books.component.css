@@ -1,0 +1,193 @@
+/* Estilos de las cards Libro */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    height: auto;
+    background-color: var(--color-fondo);
+    
+  }
+  
+  .card {
+    width: 250px;
+    height: 500px;
+    margin: 20px;
+    
+    padding: 5px;
+    border: 5px solid var(--color-primario);
+    border-radius: 5px;
+    /* background-color: rgba(255, 255, 255, 0); */
+    background: linear-gradient(var(--color-primario), var(--color-secundario));
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+    .img{
+        width: 100%;
+        height: 50%;
+    }  
+    .type{
+        color: var(--color-primario);
+        border-bottom: 5px solid white ;
+        font-size: small;
+        font-weight: bold;
+        display: flex;
+        text-align: left;
+        padding-bottom: 10px;
+    }
+    .title{
+        color: var(--color-primario);
+        text-align: center;
+        padding: 10px;
+    }
+    .author{
+        font-size: 15px;
+        font-weight: bold;
+    } 
+    .ref{
+        font-size: 15px;
+        font-weight: bold;
+    }
+    .price{
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        padding-bottom: 10px;
+    }
+    .btn {
+        color: white;
+        border-radius: 10px;
+        padding: 2px;
+        margin-top: 10px;
+        transition: all .2s ease-in-out;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        margin: auto;
+      }
+      .btn:hover {
+        background-color: var(--color-primario);
+        color: var(--color-secundario);
+        padding: 5px;
+        border-radius: 10px;
+      }
+
+      .cardF {
+        width: 250px;
+        height: 500px;
+        margin: 40px;
+        padding: 5px;
+        border: 5px solid var(--color-primario);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      
+      /* Estilos de la card Formulario */
+      .formulario {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+      }
+      
+      .titleForm {
+        color: var(--color-primario);
+        padding-bottom: 10%;
+        display: block;
+      }
+      
+      .form-group {
+        margin-bottom: 10%;
+        display: none;
+      }
+      
+      .cardF:hover .form-group {
+        display: block;
+      }
+      
+      
+      input[type="text"],
+      input[type="number"] {
+        width: 100%;
+        padding: 5px;
+        border: 1px solid var(--color-primario);
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0);
+        text-align: center;
+      }
+      
+      button[type="submit"] {
+        padding: 8px 16px;
+        background-color: var(--color-primario);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      
+      button[type="submit"]:hover {
+        color: var(--color-secundario);
+      }
+      
+      /* Estilos del aviso del Array vacío */
+
+      .containerVacio {
+        text-align: center;
+        font-size: 25px;
+        font-weight: bold;
+        padding-top: 10px ;
+        background-color: var(--color-fondo);
+        color: var(--color-primario);
+      }
+
+      /* Estilos del buscador de libros */
+      /* styles.css (o el archivo de estilos correspondiente) */
+
+.containerBuscador {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-fondo);
+}
+
+.containerBuscador button {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.containerBuscador input {
+  padding: 5px;
+  border: 2px solid var(--color-primario);
+  border-radius: 10px;
+  outline: none;
+}
+
+.containerBuscador input::placeholder {
+  color: var(--color-primario);
+}
+
+.containerBuscador i {
+  font-size: 18px;
+  padding-left: 10px;
+}
+
+
+      
+
+      

@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+header{ 
+    height: 10vh;   
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--color-primario);
+}
+h1{
+    color: white;    
+    font-family:'Times New Roman';
+}
+.letraLogo {
+    color: var(--color-secundario);
+}
+a{
+    color: rgba(255, 255, 255, 0.355);
+    font-style: italic;
+}
+a:hover{
+    color: var(--color-secundario);
+}
