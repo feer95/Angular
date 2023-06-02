@@ -1,4 +1,3 @@
-// books.service
 import { Injectable } from '@angular/core';
 import { Book } from '../models/book';
 

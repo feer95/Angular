@@ -1,4 +1,3 @@
-// update-book.component.ts
 import { Component } from '@angular/core';
 import { BooksService } from 'src/app/shared/books.service';
 import { Book } from 'src/app/models/book';
