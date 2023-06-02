@@ -1,14 +1,5 @@
-.container {
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    
-    margin-bottom: 20px;
-    
-  }
-  
-  .card {
+
+    .card {
     width: 250px;
     height: 500px;
     margin: 40px;

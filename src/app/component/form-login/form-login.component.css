@@ -1,0 +1,64 @@
+main {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h2{
+    color: var(--color-primario);
+    font-size: 50px;
+    padding-bottom: 20px;
+}
+.registro-form {
+    width: 50%;
+    height: 90%;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid var(--color-primario);
+    border-radius: 5px;
+    background-color: var(--color-secundario);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.login-group {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    color: var(--color-primario);
+    
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--color-primario);
+    border-radius: 5px;
+}
+
+button {
+    padding: 8px 16px;
+    background-color: var(--color-primario);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--color-secundario);
+    color: var(--color-primario);
+}
+:disabled {
+    background-color: rgba(0, 128, 0, 0.376);
+}
+:disabled:hover {
+    background-color: red;
+}
+.invalid-feedback{
+    color: red
+}

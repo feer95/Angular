@@ -1,24 +1,28 @@
-import { Component,} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Book } from 'src/app/models/book';
+import { BooksService } from 'src/app/shared/books.service';
 
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.css']
 })
-export class BooksComponent {
+export class BooksComponent implements OnInit{
 
-  books: Book[] = [
-    new Book(1, 1, 'Book 1', 'Tapa Blanda', 'Autor 1', 10.97, 'https://marketplace.canva.com/EAFEL6G6JSU/1/0/1003w/canva-portada-de-libro-pdf-electr%C3%B3nico-digital-silueta-persona-rosa-azul-oS2hyQNbxmM.jpg'),
-    new Book(2, 1, 'Book 2', 'Tapa Dura', 'Autor 2', 12.97, 'https://marketplace.canva.com/EAFEL6G6JSU/1/0/1003w/canva-portada-de-libro-pdf-electr%C3%B3nico-digital-silueta-persona-rosa-azul-oS2hyQNbxmM.jpg'),
-    new Book(3, 1, 'Book 3', 'Tapa Blanda', 'Autor 3', 14.97, 'https://marketplace.canva.com/EAFEL6G6JSU/1/0/1003w/canva-portada-de-libro-pdf-electr%C3%B3nico-digital-silueta-persona-rosa-azul-oS2hyQNbxmM.jpg'),
-    new Book(4, 1, 'Book 4', 'Tapa Blanda', 'Autor 1', 16.97, 'https://marketplace.canva.com/EAFEL6G6JSU/1/0/1003w/canva-portada-de-libro-pdf-electr%C3%B3nico-digital-silueta-persona-rosa-azul-oS2hyQNbxmM.jpg'),
-    new Book(5, 1, 'Book 5', 'Tapa Dura', 'Autor 2', 18.97, 'https://marketplace.canva.com/EAFEL6G6JSU/1/0/1003w/canva-portada-de-libro-pdf-electr%C3%B3nico-digital-silueta-persona-rosa-azul-oS2hyQNbxmM.jpg'),
-    new Book(6, 1, 'Book 6', 'Tapa Blanda', 'Autor 3', 20.97, 'https://marketplace.canva.com/EAFEL6G6JSU/1/0/1003w/canva-portada-de-libro-pdf-electr%C3%B3nico-digital-silueta-persona-rosa-azul-oS2hyQNbxmM.jpg'),
-  
-  ];
+  searchId: number;
+  filteredBooks: Book[] = [];
+  books: Book[] = [];
+
   //Si inicializas con null, muestra los placeholders
   nuevoLibro: Book = new Book(0,0,"","","",0,""); 
+
+  constructor(private booksService: BooksService, private toastr: ToastrService) {}
+
+  ngOnInit() {
+    this.books = this.booksService.getAll();
+    this.filteredBooks = this.books;
+  }
 
   agregarLibro(formulario: any) {
     // Validar que se hayan ingresado todos los campos requeridos
@@ -42,20 +46,44 @@ export class BooksComponent {
 
       //Reset del Formulario
       formulario.resetForm(); 
+
+      this.toastr.success('El libro se agrego bien')  
     }
   }
 
+  
   eliminarCard(id: number) {
-    // Iteración por el array 
-    for (let i = 0; i < this.books.length; i++) {
-      // Si el id_book es igual al id
+    let i = 0; // FER: Sin break. Busca hasta que el id coincida y  si lo es, elimina con splice
+    while (i < this.books.length) {
       if (this.books[i].id_book === id) {
-        //Lo borramos del array
         this.books.splice(i, 1);
-        // Y salimos
-        break;
+      } else {
+        i++;
       }
     }
+  }
+
+  buscarLibro() {
+    let books = this.booksService.getAll();
+    let filteredBooks: Book[] = [];
+  
+    if (this.searchId) {
+      let i = 0;
+      while (i < books.length && !filteredBooks.length) {
+        if (books[i].id_book === this.searchId) {
+          filteredBooks.push(books[i]);
+        }
+        i++;
+      }
+  
+      if (filteredBooks.length === 0) {
+        this.toastr.error('El libro no existe')  
+        }
+    } else {
+      filteredBooks = books; 
+    }
+  
+    return this.filteredBooks = filteredBooks;
   }
 }
 

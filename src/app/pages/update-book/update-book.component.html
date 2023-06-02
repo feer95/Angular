@@ -1,31 +1,33 @@
+<!-- update-book.component.html -->
 <main>
     <div class="espaciador"></div>
-    <form class="registro-form">
-        <h2>Edita tus libros!</h2>
-    <div class="registro-group">
-        <input type="text" placeholder="Titulo" id="titulo" name="titulo" required>
-    </div>
-    
-    <div class="registro-group">
-        <input type="text" placeholder="Tapa blanda/dura" id="tapa" name="tapa" required>
-    </div>
-    
-    <div class="registro-group">
-        <input type="text" placeholder="Autor" id="autor" name="autor" required>
-    </div>
-    
-    <div class="registro-group">
-        <input type="number" placeholder="Precio" id="precio" name="precio" required>
-    </div>
-    
-    <div class="registro-group">
-        <input type="text" placeholder="URL de la imagen" id="photo" name="photo" required>
-    </div>
-
-    <div class="registro-group">
-        <input type="number" placeholder="Código del libro" id="id" name="id" required>
-    </div>
-    
-    <input type="submit" value="Editar">
+    <form class="registro-form" (ngSubmit)="editarLibro(title.value, type.value, author.value, price.value, photo.value, id_book.value)">
+      <h2 class="titleForm">Edita tus libros!</h2>
+  
+      <div class="registro-group">
+        <input type="text" placeholder="Título" name="title" #title required>
+      </div>
+  
+      <div class="registro-group">
+        <input type="text" placeholder="Tapa Blanda/Dura" name="type" #type required>
+      </div>
+  
+      <div class="registro-group">
+        <input type="text" placeholder="Autor" name="author" #author required>
+      </div>
+  
+      <div class="registro-group">
+        <input type="number" placeholder="Precio" name="price" #price required>
+      </div>
+  
+      <div class="registro-group">
+        <input type="text" placeholder="Url Imagen" name="photo" #photo required>
+      </div>
+  
+      <div class="registro-group">
+        <input type="number" placeholder="Ref del libro" name="id_book" #id_book required>
+      </div>
+  
+      <button type="submit">Editar</button>
     </form>
 </main>

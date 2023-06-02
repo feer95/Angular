@@ -27,7 +27,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
   }
-  .registro-form input[type="submit"] {
+  button {
     width: 50%;
     margin: 0 auto;
     background-color: var(--color-primario);
@@ -39,10 +39,16 @@
     font-size: 16px;
   }
   
-  .registro-form input[type="submit"]:hover {
+  button:hover{
     color:var(--color-secundario);
     background-color: rgba(3, 85, 3, 0.74);
 
+  }
+  :disabled {
+    background-color: rgba(0, 128, 0, 0.559);
+  }
+  :disabled:hover {
+    background-color: red;
   }
   
   .registro-form input[type="text"]:focus,

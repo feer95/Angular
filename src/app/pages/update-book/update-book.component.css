@@ -25,17 +25,14 @@ main{
     margin-bottom: 20px;
   }
   
-  .registro-group label {
-    display: block;
-    margin-bottom: 5px;
-  }
   .registro-group input {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    text-align: center;
   }
-  .registro-form input[type="submit"] {
+  button {
     width: 50%;
     margin: 0 auto;
     background-color: var(--color-secundario);
@@ -47,7 +44,7 @@ main{
     font-size: 16px;
   }
   
-  .registro-form input[type="submit"]:hover {
+  button:hover {
     color:rgba(3, 85, 3, 0.74);
     background-color: var(--color-fondo);
 

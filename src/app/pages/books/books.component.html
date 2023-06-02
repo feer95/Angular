@@ -1,20 +1,23 @@
-
 <!-- Mensaje de aviso "Array vacío" -->
 <div class="containerVacio">
     <div *ngIf="books.length === 0">
     Hey! Que no hay libros disponibles, añádelos.
     </div>
 </div>
-    <div class="containerBuscador">
-        <button>        
-            <input  type="text" placeholder="Buscar por ID">
-            <i class="fa-solid fa-magnifying-glass" style="color: #035503;"></i>
-        </button>
-    </div>
-    <!-- Contenedor con las cards de libros -->
+    
+<!-- Contenedor con el buscador -->
+<div class="containerBuscador">
+    <input type="number" placeholder="Buscar por ID" [(ngModel)]="searchId">
+    <button (click)="buscarLibro()">        
+      <i class="fa-solid fa-magnifying-glass" style="color: #035503;"></i>
+    </button>
+</div>
+
+<!-- Contenedor con las cards de libros -->
 <div class="container">
-    <app-card *ngFor="let book of books; let i = index" [book]="book" [books]="books" [even]="i % 2 === 0" (cardDeleted)="eliminarCard($event)"></app-card>
-        <!-- Contenedor con una card al final con el formulario -->
+    <app-card *ngFor="let book of filteredBooks; let even = even" [book]="book"  [even]="even" (cardDeleted)="eliminarCard($event)"></app-card>
+
+    <!-- Contenedor con una card al final con el formulario -->
     <div class="cardF">
         <form class="formulario" #formulario="ngForm" (ngSubmit)="agregarLibro(formulario)">
             <h3 class="titleForm">Añade tus Libros!</h3>

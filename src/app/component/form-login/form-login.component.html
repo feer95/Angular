@@ -1,0 +1,30 @@
+<main>
+    <form class="registro-form" (ngSubmit)="onSubmit(userForm)" #userForm="ngForm">
+        <h2>Login</h2>
+
+        <div class="login-group">
+            <label>Email</label>
+            <input type="email" class="form-control" name="email" [(ngModel)]="user.email" #emailId="ngModel" 
+            [ngClass]="{ 'is-invalid': (emailId.dirty || emailId. touched) && emailId. invalid }" email required>
+            <div *ngIf="(emailId.dirty || emailId.touched) && emailId.invalid" class="invalid-feedback">
+                <div *ngIf="emailId.errors.required">La dirección de email es obligatoria</div>
+                <div *ngIf="emailId.errors.email">Dirección de email incorrecta</div>
+            </div>
+        </div>
+               
+
+        <div class="login-group">
+            <label>Contraseña</label>
+            <input type="password" class="form-control"  name="password" [(ngModel)]="user.password" #passwordId="ngModel"  
+            [ngClass]="{ 'is-invalid': (passwordId.dirty || passwordId. touched) && passwordId. invalid }" minlength="8" password required>
+            <div *ngIf="(passwordId.dirty || passwordId.touched) && passwordId.invalid" class="invalid-feedback">
+                <div *ngIf="passwordId.errors.required">La clave es obligatoria</div>
+                <div *ngIf="passwordId.errors.minlength">La clave debe tener al menos 8 caracteres</div>
+            </div>
+        </div>
+
+        <div>
+            <button [disabled]="userForm.invalid">Entrar</button>
+        </div>
+    </form>
+</main>

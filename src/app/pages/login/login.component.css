@@ -1,0 +1,6 @@
+main{
+    height: 80vh;
+    background-color: var(--color-primario);
+    border: 2px solid var(--color-fondo);
+}
+
