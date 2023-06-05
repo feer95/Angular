@@ -1,16 +1,12 @@
-<div class="container">
-    <div class="card">
-        <button class="btn-close" (click)="eliminarCard()">X</button>
-        <img [src]="book.photo" alt="" class="img">
-        <div class="info">
-          <p class="type">{{ book.type }}</p>
-          <h2 class="title">{{ book.title }}</h2>
-          <p class="author">Autor: {{ book.author }}</p>
-          <p class="ref">{{ book.id_book|refBook }}</p>
-          <p class="price">{{ book.price }}€</p>
-          <button class="btn" [ngClass]="{ 'btnEven': even, 'btnOdd': !even }">
+    <div class="cardLibro">
+        <button class="btnX" (click)="eliminarCard()">X</button>
+        <img [src]="book.photo" alt="" class="imgLibro">
+          <p class="typeLibro">{{ book.type }}</p>
+          <h2 class="titleLibro">{{ book.title }}</h2>
+          <p class="authorLibro">Autor: {{ book.author }}</p>
+          <p class="refLibro">{{ book.id_book|refBook }}</p>
+          <p class="priceLibro">{{ book.price }}€</p>
+          <button class="btnCompra" [ngClass]="{ 'btnEven': even, 'btnOdd': !even }">
             Comprar
         </button> 
-        </div>
     </div>
-</div>

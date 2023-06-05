@@ -1,12 +1,12 @@
 /* Estilos de las cards Libro */
-.container {
+.containerLibro {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     /* align-items: flex-start; */
     background-color: var(--color-fondo); 
     border: 2px solid red;
-    width: 5000px;
+    
   }
 
       .cardF {
