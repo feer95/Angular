@@ -6,29 +6,27 @@
     padding: 5px;
     border: 5px solid var(--color-primario);
     border-radius: 5px;
-    /* background-color: rgba(255, 255, 255, 0); */
     background: linear-gradient(var(--color-primario), var(--color-secundario));
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    align-items: center;
   }
     .imgLibro{
-        width: 100%;
-        height: 50%;
+        padding-top: 5px;
+        width: 90%;
+        height: 45%;
     }  
     .typeLibro{
-        color: var(--color-primario);
-        border-bottom: 5px solid white ;
+        color: var(--color-secundario);
+        border-bottom: 3px solid white;
         font-size: small;
         font-weight: bold;
         display: flex;
         text-align: left;
-        padding-bottom: 10px;
     }
     .titleLibro{
         color: var(--color-primario);
         text-align: center;
-        padding: 10px;
     }
     .authorLibro{
         font-size: 15px;
@@ -42,7 +40,6 @@
         font-size: 18px;
         font-weight: bold;
         text-align: center;
-        padding-bottom: 10px;
     }
     .btnCompra {
         color: white;
@@ -74,16 +71,16 @@
       }
 
       .btnX {
-        width: 10%;
+        width: 80%;
         padding: 2px;
-        background-color: red;
-        border: 2px solid var(--color-fondo);
+        background-color: var(--color-primario);
+        border: 2px solid var(--color-secundario);
         border-radius: 5px;
-        color: white;
+        color: red;
         cursor: pointer;
       }
       .btnX:hover {
-        background-color: white;
-        color: red
+        background-color: red;
+        color: var(--color-primario)
       }
       
