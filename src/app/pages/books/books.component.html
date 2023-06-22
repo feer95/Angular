@@ -19,7 +19,7 @@
 
     <!-- Contenedor con una card al final con el formulario -->
     <div class="cardF">
-        <form class="formulario" #formulario="ngForm" (ngSubmit)="agregarLibro(formulario)">
+        <form class="formulario" #formulario="ngForm">
             <h3 class="titleForm">Añade tus Libros!</h3>
             <div class="form-group">
             <input type="text" placeholder="Título" name="title" [(ngModel)]="nuevoLibro.title" required>

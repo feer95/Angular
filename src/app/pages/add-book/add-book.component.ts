@@ -9,40 +9,24 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './add-book.component.html',
   styleUrls: ['./add-book.component.css']
 })
-export class AddBookComponent {
-  // FER: Atributos del libro
+export class AddBookComponent 
+{
   nuevoLibro: Book;
+  id_book: number;
+  id_user: number;
   title: string;
   type: string;
   author: string;
   price: number;
   photo: string;
-  id_book: number;
-  id_user: number;
+  
 
   constructor(private booksService: BooksService, private toastr: ToastrService) {}
   
-  // FER: Función recoge los # del formulario
-  agregarLibro(title: string, type: string, author: string, price: number, photo: string, id_book: number) {
-    // FER: Igualamos los datos a los que recoge el form
-    this.title = title;
-    this.type = type;
-    this.author = author;
-    this.price = price;
-    this.photo = photo;
-    this.id_book = id_book;
-    // FER: Esto crea un nuevo Libro que añadimos luego a book service
-    this.nuevoLibro = {
-      title: this.title,
-      type: this.type,
-      author: this.author,
-      price: this.price,
-      photo: this.photo,
-      id_book: this.id_book,
-      id_user: this.id_user
-    };
-  
-    this.booksService.add(this.nuevoLibro);
-    this.toastr.success('El libro se agrego bien')  
+  agregarLibro(id_book: number, id_user: number, title: HTMLInputElement, type: HTMLInputElement, author: HTMLInputElement, price: number, photo: HTMLInputElement) {
+    let nuevoLibro: Book = new Book(id_book, id_user, title.value, type.value, author.value, price, photo.value);
+    this.booksService.add(nuevoLibro);
+    this.toastr.success('El libro se agregó correctamente');
   }
+  
 }

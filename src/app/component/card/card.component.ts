@@ -15,6 +15,7 @@ export class CardComponent {
   
   constructor(private booksService: BooksService) {}
 
+
   eliminarCard() {
     // Llamar al método del servicio para eliminar el libro por su ID
     this.booksService.delete(this.book.id_book);
