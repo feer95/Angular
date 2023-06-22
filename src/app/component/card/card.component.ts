@@ -9,17 +9,20 @@ import { BooksService } from 'src/app/shared/books.service';
 })
 export class CardComponent {
   @Input() book: Book;
-  @Input() books: Book[]; 
   @Output() cardDeleted: EventEmitter<number> = new EventEmitter<number>();
   @Input() even: boolean; 
   
   constructor(private booksService: BooksService) {}
 
-
-  eliminarCard() {
-    // Llamar al método del servicio para eliminar el libro por su ID
-    this.booksService.delete(this.book.id_book);
-    // Emitir el evento con el ID del libro
-    this.cardDeleted.emit(this.book.id_book);
+  eliminarCard(id_book: number) {
+    console.log('Eliminar libro:', id_book);
+    this.booksService.delete(id_book).subscribe(
+      (data: Book) => {
+        this.cardDeleted.emit(id_book);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }

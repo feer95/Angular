@@ -1,7 +1,6 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Book } from 'src/app/models/book';
-import { Respuesta } from 'src/app/models/respuesta'
 import { BooksService } from 'src/app/shared/books.service';
 
 @Component({
@@ -9,51 +8,55 @@ import { BooksService } from 'src/app/shared/books.service';
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.css']
 })
-export class BooksComponent implements OnInit{
-
+export class BooksComponent implements OnInit {
   searchId: number;
   filteredBooks: Book[] = [];
   books: Book[];
 
-  nuevoLibro: Book = new Book(0,0,"","","",0,""); 
+  nuevoLibro: Book = new Book(0, 0, "", "", "", 0, "");
 
-  constructor(private booksService: BooksService, private toastr: ToastrService) {}
+  constructor(private booksService: BooksService, private toastr: ToastrService) { }
 
-  ngOnInit(): void {
-    this.booksService.getAll().subscribe(
-      (data: Book[]) => {
-        this.books = data;
-        console.log(this.books); 
-      },
-      (error) => {
-        console.log(error); 
-      }
-    );
+  ngOnInit(): void 
+  {
+    this.getBooks();
+    this.buscarLibro(); 
   }
-  
 
-  buscarLibro() {
+  getBooks(): void 
+  {
     this.booksService.getAll().subscribe(
-      (books: Book[]) => {
-        let filteredBooks: Book[] = [];
-    
-        if (this.searchId) {
-          filteredBooks = books.filter(book => book.id_book === this.searchId);
-    
-          if (filteredBooks.length === 0) {
-            this.toastr.error('El libro no existe');
-          }
-        } else {
-          filteredBooks = books; 
-        }
-    
-        this.filteredBooks = filteredBooks;
+      (data: any) => {
+        this.books = data.books;
+        this.filteredBooks = this.books; 
       },
       (error) => {
-        console.error('Error al obtener los libros:', error);
+        console.log(error);
       }
     );
   }
 
+  buscarLibro(): void 
+  {
+    if (this.searchId) {
+      const book = this.books.find(book => book.id_book === this.searchId);
+      if (book) {
+        this.filteredBooks = [book];
+      } else {
+        this.toastr.error('El libro no existe');
+        this.filteredBooks = [];
+      }
+    } else {
+      this.filteredBooks = this.books;
+    }
+  }
 
+  eliminarCard(id_book: number): void 
+  {
+    const index = this.filteredBooks.findIndex(book => book.id_book === id_book);
+    if (index !== -1) 
+    {
+      this.filteredBooks.splice(index, 1);
+    }
+  }
 }

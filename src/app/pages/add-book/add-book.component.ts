@@ -9,8 +9,7 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './add-book.component.html',
   styleUrls: ['./add-book.component.css']
 })
-export class AddBookComponent 
-{
+export class AddBookComponent {
   nuevoLibro: Book;
   id_book: number;
   id_user: number;
@@ -23,10 +22,33 @@ export class AddBookComponent
 
   constructor(private booksService: BooksService, private toastr: ToastrService) {}
   
-  agregarLibro(id_book: number, id_user: number, title: HTMLInputElement, type: HTMLInputElement, author: HTMLInputElement, price: number, photo: HTMLInputElement) {
-    let nuevoLibro: Book = new Book(id_book, id_user, title.value, type.value, author.value, price, photo.value);
-    this.booksService.add(nuevoLibro);
-    this.toastr.success('El libro se agregó correctamente');
-  }
-  
+  agregarLibro() {
+    const nuevoLibro: Book = new Book(
+      this.id_book,
+      this.id_user,
+      this.title,
+      this.type,
+      this.author,
+      this.price,
+      this.photo
+    );
+
+    this.booksService.add(nuevoLibro).subscribe(
+      (data: Book) => {
+        this.toastr.success('El libro se agregó correctamente');
+
+        this.id_book = null;
+        this.id_user = null;
+        this.title = '';
+        this.type = '';
+        this.author = '';
+        this.price = null;
+        this.photo = '';
+      },
+      (error) => {
+        console.log('Error al agregar el libro:', error);
+        this.toastr.error('Ocurrió un error al agregar el libro');
+      }
+    );
+  }  
 }

@@ -18,38 +18,39 @@ export class UpdateBookComponent {
   photo: string;
   id_book: number;
   id_user: number;
-  
 
   constructor(private booksService: BooksService, private toastr: ToastrService) {}
 
-  editarLibro(title: string, type: string, author: string, price: number, photo: string, id_book: number) {
-    this.title = title;
-    this.type = type;
-    this.author = author;
-    this.price = price;
-    this.photo = photo;
-    this.id_book = id_book;
-    
-    this.libroEdit =  {
+  editarLibro() {
+      this.libroEdit =  {
+      id_book: this.id_book,
+      id_user: this.id_user,
       title: this.title,
       type: this.type,
       author: this.author,
       price: this.price,
-      photo: this.photo,
-      id_book: this.id_book,
-      id_user: this.id_user
+      photo: this.photo     
     };
 
-    
-    
-    this.booksService.edit(this.libroEdit);
-    this.toastr.success('El libro se editó bien')  
+    this.booksService.edit(this.libroEdit)
+      .subscribe(
+        (data: Book) => {
+          this.toastr.success('El libro se editó correctamente');
+          
+          this.libroEdit = data;
+
+          this.id_book = null;
+          this.id_user = null;
+          this.title = '';
+          this.type = '';
+          this.author = '';
+          this.price = null;
+          this.photo = '';
+        },
+        (error) => {
+          console.log(error);
+          this.toastr.error('Error al editar el libro');
+        }
+      );
   }
 }
-
-
-
-  
-  
-   
-  

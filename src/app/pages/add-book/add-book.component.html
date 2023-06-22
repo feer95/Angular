@@ -1,31 +1,30 @@
 <main>
   <div class="espaciador"></div>
-  <form class="registro-form" (ngSubmit)="agregarLibro(id_book, id_user, title.value, type.value, author.value, price, photo.value)">
-    
+  <form class="registro-form" (ngSubmit)="agregarLibro()">
     <h2 class="titleForm">Añade tus libros favoritos!</h2>
 
     <div class="registro-group">
-      <input type="text" placeholder="Título" name="title" #title required>
+      <input type="text" placeholder="Título" name="title" [(ngModel)]="title" required>
     </div>
 
     <div class="registro-group">
-      <input type="text" placeholder="Tapa Blanda/Dura" name="type" #type required>
+      <input type="text" placeholder="Tapa Blanda/Dura" name="type" [(ngModel)]="type" required>
     </div>
 
     <div class="registro-group">
-      <input type="text" placeholder="Autor" name="author" #author required>
+      <input type="text" placeholder="Autor" name="author" [(ngModel)]="author" required>
     </div>
 
     <div class="registro-group">
-      <input type="number" placeholder="Precio" name="price" #price required>
+      <input type="number" placeholder="Precio" name="price" [(ngModel)]="price" required>
     </div>
 
     <div class="registro-group">
-      <input type="text" placeholder="Url Imagen" name="photo" #photo required>
+      <input type="text" placeholder="Url Imagen" name="photo" [(ngModel)]="photo" required>
     </div>
 
     <div class="registro-group">
-      <input type="number" placeholder="Ref del libro" name="id_book" #id_book required>
+      <input type="number" placeholder="Ref del libro" name="id_book" [(ngModel)]="id_book" required>
     </div>
 
     <button type="submit">Agregar</button>

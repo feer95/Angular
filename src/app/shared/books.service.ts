@@ -20,7 +20,8 @@ export class BooksService {
 
   getOne(id_book: number): Observable<Book> 
   {
-    return this.http.get<Book>(this.url);
+    const apiUrl = `${this.url}/${id_book}`;
+    return this.http.get<Book>(apiUrl);
   }
 
   add(book: Book): Observable<Book> 
@@ -33,7 +34,7 @@ export class BooksService {
     return this.http.put<Book>(this.url, book);
   }
 
-  delete(id_book: number): Observable<Book> 
+  delete(id_book : number): Observable<Book> 
   {
     return this.http.delete<Book>(this.url);
   }

@@ -15,7 +15,7 @@
 
 <!-- Contenedor con las cards de libros -->
 <div class="containerLibro">
-    <app-card *ngFor="let book of filteredBooks; let even = even" [book]="book"  [even]="even" (cardDeleted)="eliminarCard($event)"></app-card>
+    <app-card *ngFor="let book of filteredBooks; let even = even" [book]="book" [even]="even" (cardDeleted)="eliminarCard($event)"></app-card>
 
     <!-- Contenedor con una card al final con el formulario -->
     <div class="cardF">
