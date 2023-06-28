@@ -6,6 +6,7 @@ export class User {
     email: string
     photo: string
     password: string
+    repetirPassword: string
 
     //Constructor 
     constructor(id_user: number, name: string, last_name: string, email: string, photo: string, password: string)

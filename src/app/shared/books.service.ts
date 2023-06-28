@@ -2,6 +2,7 @@ import { Injectable} from '@angular/core';
 import { Observable } from 'rxjs';
 import { Book } from '../models/book';
 import { HttpClient } from '@angular/common/http';
+import { Respuesta } from '../models/respuesta';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,10 @@ export class BooksService {
   constructor(private http: HttpClient) { }
   
   // Métodos
-  getAll(): Observable<Book[]> 
+  getAll(id_user: Number): Observable<any> 
   {
-    return this.http.get<Book[]>(this.url)
+    let apiUrl = `${this.url}?id_user = ${id_user}`;
+    return this.http.get(apiUrl)
   }
 
   getOne(id_book: number): Observable<Book> 

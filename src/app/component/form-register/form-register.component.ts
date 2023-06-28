@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { UserService } from 'src/app/shared/user.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-form-register',
@@ -10,34 +13,49 @@ export class FormRegisterComponent implements OnInit {
 
   public myForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private toastr: ToastrService) {
     this.buildForm();
   }
 
-  public register(){
-    const user = this.myForm.value
+  public register() {
+    const user: User = this.myForm.value;
+    if (user.password !== user.repetirPassword) {
+      this.toastr.error('Las contraseñas no coinciden');
+    } else {
+      this.userService.register(user).subscribe(
+        response => {
+          this.toastr.success('Usuario registrado exitosamente');
+          console.log(response);
+        },
+        error => {
+          this.toastr.error('Error al registrar el usuario');
+          console.log(error);
+        }
+      );
+    }
   }
 
-  private buildForm(){
+  private buildForm() {
     this.myForm = this.formBuilder.group({
-      nombre: ['', Validators.required],
-      apellido: ['', Validators.required],
+      name: ['', Validators.required],
+      last_name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      contrasena: ['', [Validators.required, Validators.minLength(8)]],
-      repetirContrasena: ['', [Validators.required, ]],
-    });
+      photo: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      repetirPassword: ['', [Validators.required, Validators.minLength(8)]],
+    }, { validators: this.validarClave });
   }
 
   private validarClave(control: AbstractControl) {
-    let resultado = {matchPassword: true};
+    let resultado = { matchPassword: true };
 
-    if (control.parent.value.password == control.value) 
+    if (control.parent && control.parent.value.password === control.value) {
       resultado = null;
+    }
 
     return resultado;
   }
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
+
 }
